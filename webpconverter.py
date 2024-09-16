@@ -41,11 +41,11 @@ class converterGUI(QWidget):
         self.layout.addWidget(self.add_folder_btn, 6, 0)
         self.add_folder_btn.clicked.connect(self.select_folder)
         # Delete selected files
-        self.delete_file_btn = QPushButton("Delete File(s)")
+        self.delete_file_btn = QPushButton("Remove File(s)")
         self.layout.addWidget(self.delete_file_btn, 5, 1)
         self.delete_file_btn.clicked.connect(self.delete_file)
         # Delete all files
-        self.delete_folder_btn = QPushButton("Delete All")
+        self.delete_folder_btn = QPushButton("Remove All")
         self.layout.addWidget(self.delete_folder_btn, 6, 1)
         self.delete_folder_btn.clicked.connect(self.delete_all)
 
@@ -63,7 +63,7 @@ class converterGUI(QWidget):
         files = []
         for file_name in os.listdir(file_dialog):
             if file_name.endswith(".webp"):
-                files.append(os.path.abspath(file_name))
+                files.append(f"{file_dialog}/{file_name}")
         self.update_list(files)
 
     def delete_file(self):
